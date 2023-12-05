@@ -2,7 +2,11 @@ import React from "react";
 
 const NewTodoForm = () => {
   const descriptionChange = (event) => {
-    console.log(event);
+    console.log("desc", event.target.value);
+  };
+
+  const assignedChange = (event) => {
+    console.log("assigned", event.target.value);
   };
 
   return (
@@ -10,7 +14,12 @@ const NewTodoForm = () => {
       <form>
         <div className="mb-3">
           <label className="form-label">Assigned</label>
-          <input type="text" className="form-control" required />
+          <input
+            type="text"
+            className="form-control"
+            required
+            onChange={assignedChange}
+          />
         </div>
         <div className="mb-3">
           <label className="form-label">Description</label>
