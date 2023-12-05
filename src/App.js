@@ -11,6 +11,8 @@ function App() {
     { rowNumber: 4, rowDesc: "Charge phone battery", rowAssigned: "User One" },
   ]);
 
+  const [isAddTodo, setIsAddTodo] = useState(false);
+
   const addTodo = (description, assigned) => {
     let rowNumber;
     if (todos.length > 0) {
@@ -39,8 +41,14 @@ function App() {
         <div className="card-header">Your Todo's</div>
         <div className="card-body">
           <TodoTable todos={todos} deleteTodo={deleteTodo} />
-          <h2>Add New Todo</h2>
-          <NewTodoForm addTodo={addTodo} />
+          <button
+            className="btn btn-primary"
+            onClick={() => setIsAddTodo(!isAddTodo)}
+          >
+            {isAddTodo ? "Close" : "Add"} New Todo
+          </button>
+
+          {isAddTodo && <NewTodoForm addTodo={addTodo} />}
         </div>
       </div>
     </div>
