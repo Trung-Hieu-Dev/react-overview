@@ -15,21 +15,14 @@ const TodoTable = (props) => {
       </thead>
 
       <tbody>
-        <TodoRowItem
-          rowNumber={todos[0].rowNumber}
-          rowDesc={todos[0].rowDesc}
-          rowAssigned={todos[0].rowAssigned}
-        />
-        <TodoRowItem
-          rowNumber={todos[1].rowNumber}
-          rowDesc={todos[1].rowDesc}
-          rowAssigned={todos[1].rowAssigned}
-        />
-        <TodoRowItem
-          rowNumber={todos[2].rowNumber}
-          rowDesc={todos[2].rowDesc}
-          rowAssigned={todos[2].rowAssigned}
-        />
+        {todos.map((todo, index) => (
+          <TodoRowItem
+            key={index}
+            rowNumber={todo.rowNumber}
+            rowDesc={todo.rowDesc}
+            rowAssigned={todo.rowAssigned}
+          />
+        ))}
       </tbody>
     </table>
   );
