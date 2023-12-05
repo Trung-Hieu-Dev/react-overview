@@ -24,6 +24,7 @@ const NewTodoForm = () => {
             className="form-control"
             required
             onChange={(e) => setDescription(e.target.value)}
+            value={description}
           />
         </div>
         <div className="mb-3">
@@ -33,6 +34,7 @@ const NewTodoForm = () => {
             rows={3}
             required
             onChange={(e) => setAssigned(e.target.value)}
+            value={assigned}
           />
         </div>
         <button className="btn btn-primary mt-3">Add Todo</button>
