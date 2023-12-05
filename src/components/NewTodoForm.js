@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 
-const NewTodoForm = () => {
+const NewTodoForm = (props) => {
   const [description, setDescription] = useState("");
   const [assigned, setAssigned] = useState("");
 
-  // const descriptionChange = (event) => {
-  //   console.log("desc", event.target.value);
-  //   setDescription(event.target.value);
-  // };
-  //
-  // const assignedChange = (event) => {
-  //   console.log("assigned", event.target.value);
-  //   setAssigned(event.target.value);
-  // };
+  const submitTodo = (e) => {
+    e.preventDefault();
+    if (assigned !== "" && description !== "") {
+      props.addTodo(description, assigned);
+      setAssigned("");
+      setDescription("");
+    }
+  };
 
   return (
     <div className="mt-5">
@@ -23,8 +22,8 @@ const NewTodoForm = () => {
             type="text"
             className="form-control"
             required
-            onChange={(e) => setDescription(e.target.value)}
-            value={description}
+            onChange={(e) => setAssigned(e.target.value)}
+            value={assigned}
           />
         </div>
         <div className="mb-3">
@@ -33,11 +32,13 @@ const NewTodoForm = () => {
             className="form-control"
             rows={3}
             required
-            onChange={(e) => setAssigned(e.target.value)}
-            value={assigned}
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
           />
         </div>
-        <button className="btn btn-primary mt-3">Add Todo</button>
+        <button className="btn btn-primary mt-3" onClick={submitTodo}>
+          Add Todo
+        </button>
       </form>
     </div>
   );
